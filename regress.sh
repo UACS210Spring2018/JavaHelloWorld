@@ -40,17 +40,19 @@ then
     echo
     echo "==== compiling $main"
     javac $main.java
+    if [ $? -ne 0 ]
+    then
+    	echo "regress.sh ERROR: java compilation failed."
+    	echo "If not failing in Eclipse, then please contact CS 210 staff."
+    	exit 1
+	fi
 
     # if that worked then run it on each file in the given directory
-    if [ $? -eq 0 ]
-    then
-        for infile in `ls ../$inputdir/*.in`
-        do
-            echo "java $main < $infile"
-            java $main < $infile
-        done
-    fi
-    echo
+	for infile in `ls ../$inputdir/*.in`
+	do
+		echo "java $main < $infile"
+		java $main < $infile
+	done
 
 # Not enough parameters given to script.
 else
