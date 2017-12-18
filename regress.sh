@@ -42,8 +42,9 @@ then
     javac $main.java
     if [ $? -ne 0 ]
     then
+    	echo "******************************************"
     	echo "regress.sh ERROR: java compilation failed."
-    	echo "If not failing in Eclipse, then please contact CS 210 staff."
+    	#echo "If works in Eclipse, then please contact CS 210 staff."
     	exit 1
 	fi
 
